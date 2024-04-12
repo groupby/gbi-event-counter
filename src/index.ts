@@ -1,0 +1,1 @@
+export * from './gbi-universal-event-tracker';
