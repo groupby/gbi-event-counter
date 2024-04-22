@@ -1,20 +1,18 @@
-import { describe, expect, it } from 'vitest';
-import { add, sub } from '@/gbi-universal-event-tracker';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { registerGBIUniversalEventTracker } from './gbi-universal-event-tracker.ts';
+import type { GBIUniversalEventTracker } from './types.ts';
 
-describe('Utility | Main', () => {
-  it('add - should add the given two numbers', async () => {
-    expect(add(4, 2)).toEqual(6);
+describe('gbi-universal-event-tracker', () => {
+  let tracker1: GBIUniversalEventTracker;
+  let tracker2: GBIUniversalEventTracker;
+
+  beforeEach(() => {
+    tracker1 = registerGBIUniversalEventTracker({ customerId: '1' });
+    tracker2 = registerGBIUniversalEventTracker({ customerId: '2' });
   });
 
-  it('sub - should subtract the given two numbers', async () => {
-    expect(sub(4, 2)).toEqual(2);
-  });
-
-  it('checks GBI__LIB_NAME', () => {
-    expect(GBI__LIB_NAME).toEqual('gbi-event-counter');
-  });
-
-  it('checks GBI__LIB_VERSION', () => {
-    expect(GBI__LIB_VERSION).toEqual('0.1.0');
+  it('Should be a singleton', () => {
+    // .toBe is used to assert if primitives are equal or that objects share the same reference
+    expect(tracker1).toBe(tracker2);
   });
 });

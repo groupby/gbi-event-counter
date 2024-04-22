@@ -1,1 +1,12 @@
-export * from './gbi-universal-event-tracker';
+import { registerGBIUniversalEventTracker } from './gbi-universal-event-tracker';
+
+export type {
+  GBIUniversalEventTracker,
+  GBIUniversalEventTrackerOptions,
+} from './gbi-universal-event-tracker';
+
+export type { GBITrackerEvent } from './lib/types.ts';
+
+export default {
+  registerGBIUniversalEventTracker,
+};
