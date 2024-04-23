@@ -1,16 +1,23 @@
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
+import GBITracker from 'gbi-event-counter';
+import { useEffect } from 'react';
 
 export default function App() {
+  useEffect(() => {
+    const tracker = GBITracker.registerGBIUniversalEventTracker({
+      customerId: 'customer 1',
+      listenToPushState: false,
+    });
+    tracker.trackEvent({ type: 'other', metadata: { initial: true } });
+  }, []);
+
   return (
     <div>
-      <h1>Basic Example</h1>
+      <h1>React TypeScript Example</h1>
 
       <p>
-        This example demonstrates some of the core features of React Router
-        including nested <code>&lt;Route&gt;</code>s,{' '}
-        <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a
-        "*" route (aka "splat route") to render a "not found" page when someone
-        visits an unrecognized URL.
+        This example demonstrates how to consume "gbi-event-counter" library via
+        NPM
       </p>
 
       {/* Routes nest inside one another. Nested route paths build upon

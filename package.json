@@ -1,7 +1,19 @@
 {
   "name": "gbi-event-counter",
-  "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "description": "gbi-event-counter",
+  "main": "gbi-event-counter-0.1.1.min.js",
+  "keywords": [
+    "groupby",
+    "tracker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groupby/gbi-event-counter.git"
+  },
+  "author": "GroupBy Inc.",
+  "license": "MIT",
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
