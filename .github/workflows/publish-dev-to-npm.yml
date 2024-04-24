@@ -45,6 +45,6 @@ jobs:
         run: pnpm test
 
       - name: Publish to NPM
-        run: pnpm publish --dry-run
+        run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
