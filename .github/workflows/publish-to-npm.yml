@@ -1,7 +1,4 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: NPM build and Publish
+name: Publish to NPM
 
 on:
   push:
@@ -10,8 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  build-and-publish:
     runs-on: ubuntu-22.04
 
     strategy:
@@ -45,28 +41,10 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
-  test:
-    runs-on: ubuntu-22.04
-    needs: build
-
-    steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
       - name: Test
         run: pnpm test
 
-  publish:
-    runs-on: ubuntu-22.04
-    needs: test
-
-    steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-
       - name: Publish to NPM
-        run: pnpm publish --no-git-checks --dry-run
+        run: pnpm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
