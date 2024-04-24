@@ -2,6 +2,8 @@
   "name": "gbi-event-counter",
   "version": "0.1.3",
   "description": "gbi-event-counter",
+  "main": "dist/gbi-event-counter-0.1.3.min.js",
+  "types": "dist/gbi-event-counter-0.1.3.d.ts",
   "keywords": [
     "groupby",
     "tracker"
