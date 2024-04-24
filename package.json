@@ -1,9 +1,7 @@
 {
   "name": "gbi-event-counter",
-  "version": "0.1.4",
+  "version": "0.1.10-dev",
   "description": "gbi-event-counter",
-  "main": "dist/gbi-event-counter-0.1.4.min.js",
-  "types": "dist/gbi-event-counter-0.1.4.d.ts",
   "keywords": [
     "groupby",
     "tracker"
@@ -16,9 +14,19 @@
   "license": "MIT",
   "private": false,
   "type": "module",
+  "main": "dist/gbi-event-counter-0.1.10-dev.min.js",
+  "types": "dist/gbi-event-counter-0.1.10-dev.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "vite",
+    "increment-version": "node scripts/increment-version.cjs",
     "build": "tsc && vite build",
+    "build:major": "npm run increment-version -- major && npm run build",
+    "build:minor": "npm run increment-version -- minor && npm run build",
+    "build:patch": "npm run increment-version -- patch && npm run build",
+    "build:dev": "npm run increment-version -- dev && npm run build",
+    "dev": "vite",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest --run",
@@ -54,8 +62,5 @@
     "vite": "^5.2.8",
     "vite-plugin-dts": "^3.8.1",
     "vitest": "^1.5.0"
-  },
-  "files": [
-    "dist"
-  ]
+  }
 }

@@ -21,7 +21,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "sourceMap": true,
     "declaration": true,
+    // Specify the output directory for compiled JavaScript and declaration files
+    "outDir": "dist",
+    // Specify the root directory of your TypeScript source files
+    "rootDir": "src",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
