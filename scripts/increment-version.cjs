@@ -4,6 +4,8 @@ const path = require('path');
 function incrementVersion(version, type) {
   let parts = version.split('.');
 
+  const getNextPatchVersionNumber = () => String(parseInt(parts[2]) + 1);
+
   switch (type) {
     case 'major':
       parts[0] = String(parseInt(parts[0]) + 1);
@@ -15,14 +17,15 @@ function incrementVersion(version, type) {
       parts[2] = '0';
       break;
     case 'patch':
-      parts[2] = String(parseInt(parts[2]) + 1);
+      parts[2] = getNextPatchVersionNumber();
       break;
     case 'dev':
-      parts[2] = `${String(parseInt(parts[2]) + 1)}-dev`;
+      parts[2] = `${getNextPatchVersionNumber()}-dev`;
       break;
     default:
       throw new Error('Invalid version type. Use "major", "minor", "patch", or "dev".',);
   }
+  console.log(JSON.stringify(parts));
   return parts.join('.');
 }
 

@@ -47,7 +47,7 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: npm run build:${{ github.event.inputs.changesLevel }} --if-present
+        run: pnpm run build:${{ github.event.inputs.changesLevel }} --if-present
 
       - name: Test
         run: pnpm test
