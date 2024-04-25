@@ -1,6 +1,6 @@
 {
   "name": "gbi-event-counter",
-  "version": "0.1.10-dev",
+  "version": "0.1.12-dev",
   "description": "gbi-event-counter",
   "keywords": [
     "groupby",
@@ -14,18 +14,14 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "main": "dist/gbi-event-counter-0.1.10-dev.min.js",
-  "types": "dist/gbi-event-counter-0.1.10-dev.d.ts",
+  "main": "dist/gbi-event-counter-0.1.12-dev.min.js",
+  "types": "dist/gbi-event-counter-0.1.12-dev.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "increment-version": "node scripts/increment-version.cjs",
     "build": "tsc && vite build",
-    "build:major": "npm run increment-version -- major && npm run build",
-    "build:minor": "npm run increment-version -- minor && npm run build",
-    "build:patch": "npm run increment-version -- patch && npm run build",
-    "build:dev": "npm run increment-version -- dev && npm run build",
     "dev": "vite",
     "preview": "vite preview",
     "lint": "eslint .",
