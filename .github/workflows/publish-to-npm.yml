@@ -1,4 +1,4 @@
-name: Publish DEV to NPM
+name: Publish to NPM
 
 on:
   workflow_dispatch:
