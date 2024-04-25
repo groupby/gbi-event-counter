@@ -1,10 +1,18 @@
 name: Publish DEV to NPM
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      changesLevel:
+        description: 'Level of changes'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - patch
+          - minor
+          - major
 
 jobs:
   build-and-publish:
@@ -39,7 +47,7 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: npm run build:dev --if-present
+        run: npm run build:${{ github.event.inputs.changesLevel }} --if-present
 
       - name: Test
         run: pnpm test
