@@ -65,6 +65,9 @@ jobs:
           JS_MAJOR_MAP_FILE_NAME="${JS_MAJOR_FILE_NAME}.map"
           TYPES_MAJOR_FILE_NAME="${NAME}-${MAJOR_VERSION}.d.ts"
           
+          DIST_DIR="dist"
+          CDN_DIR="cdn/static/javascript"
+          
           echo "JS_FILE_NAME: $JS_FILE_NAME"
           echo "JS_MAP_FILE_NAME: $JS_MAP_FILE_NAME"
           echo "TYPES_FILE_NAME: $TYPES_FILE_NAME"
@@ -72,13 +75,13 @@ jobs:
           echo "JS_MAJOR_MAP_FILE_NAME: $JS_MAJOR_MAP_FILE_NAME"
           echo "TYPES_MAJOR_FILE_NAME: $TYPES_MAJOR_FILE_NAME"
           
-          cp "build/${JS_FILE_NAME}" "cdn/static/javascript/${JS_FILE_NAME}"
-          cp "build/${JS_MAP_FILE_NAME}" "cdn/static/javascript/${JS_MAP_FILE_NAME}"
-          cp "build/${TYPES_FILE_NAME}" "cdn/static/javascript/${TYPES_FILE_NAME}"
+          cp "${DIST_DIR}/${JS_FILE_NAME}" "${CDN_DIR}/${JS_FILE_NAME}"
+          cp "${DIST_DIR}/${JS_MAP_FILE_NAME}" "${CDN_DIR}/${JS_MAP_FILE_NAME}"
+          cp "${DIST_DIR}/${TYPES_FILE_NAME}" "${CDN_DIR}/${TYPES_FILE_NAME}"
 
-          cp "build/${JS_MAJOR_FILE_NAME}" "cdn/static/javascript/${JS_MAJOR_FILE_NAME}"
-          cp "build/${JS_MAJOR_MAP_FILE_NAME}" "cdn/static/javascript/${JS_MAJOR_MAP_FILE_NAME}"
-          cp "build/${TYPES_MAJOR_FILE_NAME}" "cdn/static/javascript/${TYPES_MAJOR_FILE_NAME}"
+          cp "${DIST_DIR}/${JS_MAJOR_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_FILE_NAME}"
+          cp "${DIST_DIR}/${JS_MAJOR_MAP_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_MAP_FILE_NAME}"
+          cp "${DIST_DIR}/${TYPES_MAJOR_FILE_NAME}" "${CDN_DIR}/${TYPES_MAJOR_FILE_NAME}"
 
       - name: Push lib files to new branch in CDN repository
         working-directory: cdn
