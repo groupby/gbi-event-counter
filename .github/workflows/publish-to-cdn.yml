@@ -79,9 +79,9 @@ jobs:
           cp "${DIST_DIR}/${JS_MAP_FILE_NAME}" "${CDN_DIR}/${JS_MAP_FILE_NAME}"
           cp "${DIST_DIR}/${TYPES_FILE_NAME}" "${CDN_DIR}/${TYPES_FILE_NAME}"
 
-          cp "${DIST_DIR}/${JS_MAJOR_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_FILE_NAME}"
-          cp "${DIST_DIR}/${JS_MAJOR_MAP_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_MAP_FILE_NAME}"
-          cp "${DIST_DIR}/${TYPES_MAJOR_FILE_NAME}" "${CDN_DIR}/${TYPES_MAJOR_FILE_NAME}"
+          cp "${CDN_DIR}/${JS_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_FILE_NAME}"
+          cp "${CDN_DIR}/${JS_MAP_FILE_NAME}" "${CDN_DIR}/${JS_MAJOR_MAP_FILE_NAME}"
+          cp "${CDN_DIR}/${TYPES_FILE_NAME}" "${CDN_DIR}/${TYPES_MAJOR_FILE_NAME}"
 
       - name: Push lib files to new branch in CDN repository
         working-directory: cdn
