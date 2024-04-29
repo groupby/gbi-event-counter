@@ -43,9 +43,6 @@ jobs:
       - name: Clone new repository
         run: git clone https://github.com/groupby/cdn.git cdn
 
-      - name: Copy dist folder
-        run: cp -r dist/ cdn/static/javascript
-
       - name: Commit and push changes
         working-directory: cdn
         run: |
@@ -55,3 +52,6 @@ jobs:
           echo "Name: $NAME"
           echo "Version: $VERSION"
           echo "Major Version: $MAJOR_VERSION"
+          echo "Current Name: $CUR_NAME"
+        env:
+          CUR_NAME: $(node -e "console.log(require('./package.json').name)")
