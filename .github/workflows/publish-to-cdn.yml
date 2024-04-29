@@ -40,24 +40,53 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Define Job Variables
+      - name: Define Job Variables from package.json
         run: |
           NAME=$(node -e "console.log(require('./package.json').name)")
           VERSION=$(node -e "console.log(require('./package.json').version)")
           MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)
-          JS_FILE_NAME="${NAME}-${VERSION}.min.js"
-          echo "JS_FILE_NAME: $JS_FILE_NAME"
-          
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "JS_FILE_NAME=$JS_FILE_NAME" >> $GITHUB_ENV
-
-      - name: Clone new repository
-        run: git clone https://github.com/groupby/cdn.git cdn
-
-      - name: Commit and push changes
-        working-directory: cdn
-        run: |
           echo "Name: $NAME"
           echo "Version: $VERSION"
           echo "Major Version: $MAJOR_VERSION"
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "MAJOR_VERSION=$MAJOR_VERSION" >> $GITHUB_ENV
+
+      - name: Clone CDN repository
+        run: git clone https://github.com/groupby/cdn.git cdn
+
+      - name: Copy dist files to CDN repository
+        run: |
+          JS_FILE_NAME="${NAME}-${VERSION}.min.js"
+          JS_MAP_FILE_NAME="${JS_FILE_NAME}.map"
+          TYPES_FILE_NAME="${NAME}-${VERSION}.d.ts"
+          
+          JS_MAJOR_FILE_NAME="${NAME}-${MAJOR_VERSION}.min.js"
+          JS_MAJOR_MAP_FILE_NAME="${JS_MAJOR_FILE_NAME}.map"
+          TYPES_MAJOR_FILE_NAME="${NAME}-${MAJOR_VERSION}.d.ts"
+          
+          echo "JS_FILE_NAME: $JS_FILE_NAME"
+          echo "JS_MAP_FILE_NAME: $JS_MAP_FILE_NAME"
+          echo "TYPES_FILE_NAME: $TYPES_FILE_NAME"
+          echo "JS_MAJOR_FILE_NAME: $JS_MAJOR_FILE_NAME"
+          echo "JS_MAJOR_MAP_FILE_NAME: $JS_MAJOR_MAP_FILE_NAME"
+          echo "TYPES_MAJOR_FILE_NAME: $TYPES_MAJOR_FILE_NAME"
+          
+          cp "build/${JS_FILE_NAME}" "cdn/static/javascript/${JS_FILE_NAME}"
+          cp "build/${JS_MAP_FILE_NAME}" "cdn/static/javascript/${JS_MAP_FILE_NAME}"
+          cp "build/${TYPES_FILE_NAME}" "cdn/static/javascript/${TYPES_FILE_NAME}"
+
+          cp "build/${JS_MAJOR_FILE_NAME}" "cdn/static/javascript/${JS_MAJOR_FILE_NAME}"
+          cp "build/${JS_MAJOR_MAP_FILE_NAME}" "cdn/static/javascript/${JS_MAJOR_MAP_FILE_NAME}"
+          cp "build/${TYPES_MAJOR_FILE_NAME}" "cdn/static/javascript/${TYPES_MAJOR_FILE_NAME}"
+
+      - name: Push lib files to new branch in CDN repository
+        working-directory: cdn
+        run: |
+          git checkout -b "${NAME}-${VERSION}"
+          git add "static/javascript/${NAME}-*.js"
+          git add "static/javascript/${NAME}-*.map"
+          git add "static/javascript/${NAME}-*.d.ts"
+          git commit -m "Release ${NAME} v${VERSION}"
+          git push -u origin HEAD
           
