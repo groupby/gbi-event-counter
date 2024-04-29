@@ -40,19 +40,24 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Define Job Variables
+        run: |
+          NAME=$(node -e "console.log(require('./package.json').name)")
+          VERSION=$(node -e "console.log(require('./package.json').version)")
+          MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)
+          echo "Name: $NAME"
+          echo "Version: $VERSION"
+          echo "Major Version: $MAJOR_VERSION"
+          echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "MAJOR_VERSION=$MAJOR_VERSION" >> $GITHUB_ENV
+
       - name: Clone new repository
         run: git clone https://github.com/groupby/cdn.git cdn
 
       - name: Commit and push changes
         working-directory: cdn
         run: |
-          NAME=$(node -e "console.log(require('../package.json').name)")
-          VERSION=$(node -e "console.log(require('../package.json').version)")
-          MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)
           echo "Name: $NAME"
           echo "Version: $VERSION"
           echo "Major Version: $MAJOR_VERSION"
-          echo "Current Name: $CUR_NAME"
-          echo "GBI__LIB_NAME: $GBI__LIB_NAME"
-        env:
-          CUR_NAME: ${{ vars.GBI__LIB_NAME }}
