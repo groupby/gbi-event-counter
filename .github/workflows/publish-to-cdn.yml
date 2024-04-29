@@ -45,7 +45,7 @@ jobs:
           VERSION=$(node -e "console.log(require('./package.json').version)")
           echo "NAME=$(node -e "console.log(require('./package.json').name)")" >> $GITHUB_ENV
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)" >> $GITHUB_ENVs
+          echo "MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)" >> $GITHUB_ENV
 
       - name: Clone new repository
         run: git clone https://github.com/groupby/cdn.git cdn
