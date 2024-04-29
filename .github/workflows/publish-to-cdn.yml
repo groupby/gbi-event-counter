@@ -55,4 +55,4 @@ jobs:
           echo "Current Name: $CUR_NAME"
           echo "GBI__LIB_NAME: $GBI__LIB_NAME"
         env:
-          CUR_NAME: ${{ var.GBI__LIB_NAME }}
+          CUR_NAME: ${{ vars.GBI__LIB_NAME }}
