@@ -42,10 +42,14 @@ jobs:
 
       - name: Define Job Variables
         run: |
+          NAME=$(node -e "console.log(require('./package.json').name)")
           VERSION=$(node -e "console.log(require('./package.json').version)")
-          echo "NAME=$(node -e "console.log(require('./package.json').name)")" >> $GITHUB_ENV
+          MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)
+          JS_FILE_NAME="${NAME}-${VERSION}.min.js"
+          echo "JS_FILE_NAME: $JS_FILE_NAME"
+          
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "MAJOR_VERSION=$(echo $VERSION | cut -d '.' -f 1)" >> $GITHUB_ENV
+          echo "JS_FILE_NAME=$JS_FILE_NAME" >> $GITHUB_ENV
 
       - name: Clone new repository
         run: git clone https://github.com/groupby/cdn.git cdn
@@ -56,3 +60,4 @@ jobs:
           echo "Name: $NAME"
           echo "Version: $VERSION"
           echo "Major Version: $MAJOR_VERSION"
+          
