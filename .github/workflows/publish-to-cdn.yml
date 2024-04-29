@@ -53,5 +53,6 @@ jobs:
           echo "Version: $VERSION"
           echo "Major Version: $MAJOR_VERSION"
           echo "Current Name: $CUR_NAME"
+          echo "GBI__LIB_NAME: $GBI__LIB_NAME"
         env:
-          CUR_NAME: $(node -e "console.log(require('./package.json').name)")
+          CUR_NAME: ${{ var.GBI__LIB_NAME }}
