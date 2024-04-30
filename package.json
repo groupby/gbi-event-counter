@@ -1,6 +1,6 @@
 {
   "name": "gbi-event-counter",
-  "version": "",
+  "version": "0.1.13-dev",
   "description": "gbi-event-counter",
   "keywords": [
     "groupby",
@@ -14,8 +14,8 @@
   "license": "MIT",
   "private": false,
   "type": "module",
-  "main": "/",
-  "types": "/",
+  "main": "dist/gbi-event-counter-0.1.13-dev.min.js",
+  "types": "dist/gbi-event-counter-0.1.13-dev.d.ts",
   "files": [
     "dist"
   ],
