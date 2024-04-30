@@ -20,7 +20,7 @@
     "dist"
   ],
   "scripts": {
-    "clean": "rm -r ./dist 2> /dev/null",
+    "clean": "rm -rf dist cdn 2> /dev/null",
     "increment-version": "node scripts/node/increment-version.cjs",
     "build": "tsc && vite build",
     "dev": "vite",
