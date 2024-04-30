@@ -49,3 +49,22 @@ get_js_map_name() {
 get_types_name() {
   get_name "$1" "${TYPES_SUFFIX}"
 }
+
+get_new_package_version() {
+  local current_version=$1
+  local component=$2
+  node -e "console.log(require('./scripts/node/increment-version.cjs').incrementVersion(process.argv[1], process.argv[2]))" "${current_version}" "${component}"
+}
+
+set_package_version() {
+  local new_version=$1
+  local js_file_name
+  local types_file_name
+
+  js_file_name=$(get_js_name "${new_version}")
+  types_file_name=$(get_types_name "${new_version}")
+
+  jq ".version = \"${new_version}\"" package.json > tmp.json && mv tmp.json package.json
+  jq ".main = \"${DIST_DIR}/${js_file_name}\"" package.json > tmp.json && mv tmp.json package.json
+  jq ".types = \"${DIST_DIR}/${types_file_name}\"" package.json > tmp.json && mv tmp.json package.json
+}
