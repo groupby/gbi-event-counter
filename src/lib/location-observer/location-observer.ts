@@ -17,6 +17,22 @@ const subscribe = (callback: LocationChangeListener) => {
   };
 };
 
+// Create a handler object to define custom behavior
+const historyHandler = {
+  apply: function(target, thisArg, args) {
+    // Execute your additional logic before calling the original pushState function
+    // For example, you can track navigation events here
+    // console.log('Tracking navigation event for URL:', args[2]);
+    handleLocationChange('pushState');
+
+    // Call the original pushState function
+    return target.apply(thisArg, args);
+  },
+};
+
+// Create a proxy for window.history.pushState
+const pushStateProxy = new Proxy(window.history.pushState, historyHandler);
+
 const init = () => {
   _instance = {
     subscribe,
@@ -24,43 +40,8 @@ const init = () => {
 
   window.addEventListener('popstate', () => handleLocationChange('popstate'));
 
-  // window.history.pushState = new Proxy(window.history.pushState, {
-  //   apply: (target, thisArg, argArray) => {
-  //     // trigger here what you need
-  //     handleLocationChange('pushState');
-  //     return target.apply(thisArg, argArray);
-  //   },
-  // });
-
-  type HistoryPushState = typeof window.history.pushState;
-
-  const target = (value: HistoryPushState) => {
-    return typeof value;
-  };
-
-  interface Target {
-    (value: HistoryPushState): string;
-
-    types: string[];
-  }
-
-  const getter: Required<Target> = {
-    types: ['string', 'number', 'boolean', 'undefined', 'object', 'function'],
-  };
-
-  const proxy = new Proxy<Target>(target as Target, {
-    apply(target, thisArg: any, argArray: any[]): any {
-
-      handleLocationChange('pushState');
-
-      return Reflect.apply(target, thisArg, argArray);
-    },
-    get(_: Target, p: string, receiver: any): any {
-      return Reflect.get(getter, p, receiver);
-    },
-  });
-
-  proxy(window.history.pushState);
+  // Override window.history.pushState with the proxy
+  window.history.pushState = pushStateProxy;
 };
 
 export const registerLocationObserver = (): LocationObserver => {

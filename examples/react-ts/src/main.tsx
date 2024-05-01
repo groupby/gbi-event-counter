@@ -11,11 +11,11 @@ const tracker = GBITracker.registerGBIUniversalEventTracker({
   listenToPushState: true,
 });
 
-const orgPushState = window.history.pushState;
-window.history.pushState = function() {
-  console.log('here : ', arguments);
-  orgPushState.apply(this, arguments);
-};
+// const orgPushState = window.history.pushState;
+// window.history.pushState = function() {
+//   console.log('here : ', arguments);
+//   orgPushState.apply(this, arguments);
+// };
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
