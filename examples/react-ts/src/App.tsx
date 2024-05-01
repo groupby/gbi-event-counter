@@ -1,15 +1,10 @@
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
-import GBITracker from 'gbi-event-counter';
-import { useEffect } from 'react';
+
 
 export default function App() {
-  useEffect(() => {
-    const tracker = GBITracker.registerGBIUniversalEventTracker({
-      customerId: 'customer 1',
-      listenToPushState: false,
-    });
-    tracker.trackEvent({ type: 'other', metadata: { initial: true } });
-  }, []);
+  // useEffect(() => {
+  //   tracker.trackEvent({ type: 'other', metadata: { initial: true } });
+  // }, []);
 
   return (
     <div>

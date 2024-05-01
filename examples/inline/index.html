@@ -7,9 +7,11 @@
 </head>
 <body>
 <p>Inline example</p>
-<script src="../../dist/gbi-event-counter-0.1.12-dev.min.js"></script>
+<a href="#id-to-go-inside-same-page">Click here to go to a section inside this page!</a>
+<div id="id-to-go-inside-same-page">section to go</div>
+<script src="../../dist/gbi-event-counter-0.1.13-dev.min.js"></script>
 <script>
-  const tracker = GBIEventCounter.registerGBIUniversalEventTracker({ customerId: 'customer-1' });
+  const tracker = GBIEventCounter.registerGBIUniversalEventTracker({ customerId: 'customer-1', listenToPushState: true });
   tracker.trackEvent();
 </script>
 </body>

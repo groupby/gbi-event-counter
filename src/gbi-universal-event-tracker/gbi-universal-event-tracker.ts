@@ -1,20 +1,6 @@
-// export const libName = GBI__LIB_NAME;
-// export const libVersion = GBI__LIB_VERSION;
-//
-// export default {
-//   libName,
-//   libVersion
-// };
+import { GBIUniversalEventTracker, GBIUniversalEventTrackerOptions } from './types.ts';
 
-import {
-  GBIUniversalEventTracker,
-  GBIUniversalEventTrackerOptions,
-} from './types.ts';
-
-import {
-  type LocationObserver,
-  registerLocationObserver,
-} from '@/lib/location-observer';
+import { type LocationObserver, registerLocationObserver } from '@/lib/location-observer';
 import type { GBITrackerEvent } from '@/lib/types.ts';
 import { type EventSender, registerEventSender } from '@/lib/event-sender';
 
@@ -55,10 +41,10 @@ const init = (options: GBIUniversalEventTrackerOptions) => {
   };
   if (listenToPushState) {
     _locationObserver = registerLocationObserver();
-    _locationObserver.subscribe((location) => {
+    _locationObserver.subscribe((location, source) => {
       _tracker.trackEvent({
         type: 'location-changed',
-        metadata: { location },
+        metadata: { location, source },
       });
     });
   }

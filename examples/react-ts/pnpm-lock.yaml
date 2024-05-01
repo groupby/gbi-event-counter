@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       gbi-event-counter:
-        specifier: ^0.1.1
-        version: 0.1.1
+        specifier: ^0.1.12-dev
+        version: 0.1.12-dev
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -474,8 +474,8 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  gbi-event-counter@0.1.1:
-    resolution: {integrity: sha512-JuJhnTnNnxnlHln9ty1Y68adqZUB8VFK2s3yiqzBVJRPRacWYTEwxbS+Oq4IJfw+Uidvw5sfvIZnjt8TTcr/GQ==}
+  gbi-event-counter@0.1.12-dev:
+    resolution: {integrity: sha512-A3vgwXupYljvTbN23Zg+ooDUXj3Lp8VXM8N59V48+s/IBQRghMbxa4F0cvm8r+3XR7fwooEC2t+iY0m/IiSXlw==}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -1013,7 +1013,7 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  gbi-event-counter@0.1.1: {}
+  gbi-event-counter@0.1.12-dev: {}
 
   gensync@1.0.0-beta.2: {}
 
