@@ -30,7 +30,7 @@ log() {
 log
 
 # Push updated package.json to new release branch
-#git checkout -b "${NEW_BRANCH}"
-#git add "package.json"
-#git commit -m "Release ${NAME} v${NEW_VERSION}"
-#git push -u origin "${NEW_BRANCH}"
+git checkout -b "${NEW_BRANCH}"
+git add "package.json"
+git commit -m "Release ${NAME} v${NEW_VERSION}"
+git push -u origin "${NEW_BRANCH}"
