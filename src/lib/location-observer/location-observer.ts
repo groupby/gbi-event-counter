@@ -18,7 +18,7 @@ const subscribe = (callback: LocationChangeListener) => {
 };
 
 // Create a handler object to define custom behavior
-const historyHandler = {
+const historyHandler: ProxyHandler<any> = {
   apply: function(target, thisArg, args) {
     // Execute your additional logic before calling the original pushState function
     // For example, you can track navigation events here
