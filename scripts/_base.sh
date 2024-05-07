@@ -66,7 +66,7 @@ set_package_version() {
   local js_file_name
   local types_file_name
 
-  js_file_name=$(get_js_name "${new_version}")
+  js_file_name=$(get_min_js_name "${new_version}")
   types_file_name=$(get_types_name "${new_version}")
 
   jq ".version = \"${new_version}\"" package.json > tmp.json && mv tmp.json package.json
