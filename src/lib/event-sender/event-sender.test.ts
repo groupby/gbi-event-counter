@@ -3,7 +3,7 @@ import { GBITrackerEvent } from '@/lib/types.ts';
 import { send } from './event-sender.ts';
 
 describe('event-sender', () => {
-  const url = 'http:/my-test.url';
+  const url = 'https://www.google.com/';
 
   it('Should fetch URL passed', () => {
     const fetchSpy = vi.spyOn(window, 'fetch');
