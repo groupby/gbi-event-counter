@@ -36,10 +36,10 @@ jobs:
         run: pnpm i
 
       - name: Build
-        run: pnpm run build
+        run: pnpm run build:npm
 
       - name: Test
-        run: pnpm test
+        run: pnpm run test:npm
 
       - name: Publish to NPM
         run: pnpm publish --no-git-checks

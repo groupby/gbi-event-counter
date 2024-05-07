@@ -1,36 +1,18 @@
-import { EventSender, EventSenderOptions } from './types.ts';
 import { GBITrackerEvent } from '@/lib/types.ts';
+import { SendEventOptions } from './types.ts';
 
-let _instance: EventSender;
-let _customerId: string;
-const _url = 'https://www.gbi-not-defined.com';
+export const send = async (
+  event: GBITrackerEvent,
+  options: SendEventOptions,
+) => {
+  const { customerId, url } = options;
 
-const send = async (event: GBITrackerEvent) => {
-  // Default options are marked with *
-  const response = await fetch(_url, {
+  const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ customer: _customerId, event }), // body data type must match "Content-Type" header
+    body: JSON.stringify({ customer: customerId, event }),
   });
-  return response.json(); // parses JSON response into native JavaScript objects
+  return response.json();
 };
-
-const init = (options: EventSenderOptions) => {
-  _customerId = options.customerId;
-  _instance = {
-    send,
-  };
-};
-
-export const registerEventSender = (
-  options: EventSenderOptions,
-): EventSender => {
-  if (!_instance) {
-    init(options);
-  }
-  return _instance;
-};
-
-export default registerEventSender;

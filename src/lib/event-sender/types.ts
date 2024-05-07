@@ -1,9 +1,4 @@
-import { GBITrackerEvent } from '@/lib/types.ts';
-
-export interface EventSender {
-  send(event: GBITrackerEvent): void;
-}
-
-export interface EventSenderOptions {
+export interface SendEventOptions {
   customerId: string;
+  url: string;
 }

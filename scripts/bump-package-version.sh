@@ -6,7 +6,6 @@
 
 COMPONENT=$1
 
-#NEW_VERSION=$(node -e "console.log(require('./scripts/node/increment-version.cjs').incrementVersion(process.argv[1], process.argv[2]))" "${VERSION}" "${COMPONENT}")
 NEW_VERSION=$(get_new_package_version "${VERSION}" "${COMPONENT}")
 NEW_BRANCH="release/v${NEW_VERSION}"
 

@@ -6,7 +6,8 @@ readonly MAJOR_VERSION=$(echo "${VERSION}" | cut -d '.' -f 1)
 readonly CDN_INTERNAL_PATH="static/javascript"
 readonly CDN_DIR="cdn/${CDN_INTERNAL_PATH}"
 readonly DIST_DIR="dist"
-readonly JS_SUFFIX="min.js"
+readonly JS_SUFFIX="js"
+readonly MIN_JS_SUFFIX="min.${JS_SUFFIX}"
 readonly MAP_SUFFIX="${JS_SUFFIX}.map"
 readonly TYPES_SUFFIX="d.ts"
 readonly JS_GLOB="${NAME}*.${JS_SUFFIX}"
@@ -40,6 +41,10 @@ get_name() {
 
 get_js_name() {
   get_name "$1" "${JS_SUFFIX}"
+}
+
+get_min_js_name() {
+  get_name "$1" "${MIN_JS_SUFFIX}"
 }
 
 get_js_map_name() {
