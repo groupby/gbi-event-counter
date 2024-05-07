@@ -12,6 +12,7 @@ export default {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'GBIEventCounter',
+      fileName: () => `${fullName}.js`,
       formats: ['umd'],
     },
     minify: false,

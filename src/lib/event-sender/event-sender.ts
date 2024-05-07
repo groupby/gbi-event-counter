@@ -6,13 +6,16 @@ export const send = async (
   options: SendEventOptions,
 ) => {
   const { customerId, url } = options;
-
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ customer: customerId, event }),
-  });
-  return response.json();
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ customer: customerId, event }),
+    });
+    return response.json();
+  } catch (e) {
+    throw new Error((e as Error)?.message ?? 'Error sending event');
+  }
 };

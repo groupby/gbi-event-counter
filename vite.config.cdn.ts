@@ -1,11 +1,12 @@
 /// <reference types="vite" />
-import { defineConfig, mergeConfig } from 'vite';
+import { mergeConfig } from 'vite';
 import terser from '@rollup/plugin-terser';
 
 // @ts-ignore
 import BaseConfig, { fullName } from './vite.config.base';
 
-const config = defineConfig({
+/** @type {import('vite').UserConfig} */
+const config = {
   build: {
     lib: {
       entry: BaseConfig.build.lib.entry,
@@ -13,15 +14,19 @@ const config = defineConfig({
     rollupOptions: {
       output: [
         {
+          name: BaseConfig.build.lib.name,
           entryFileNames: `${fullName}.js`,
+          format: 'umd',
         },
         {
+          name: BaseConfig.build.lib.name,
           entryFileNames: `${fullName}.min.js`,
           plugins: [terser()],
+          format: 'umd',
         },
       ],
     },
   },
-});
+};
 
 export default mergeConfig(BaseConfig, config);
