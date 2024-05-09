@@ -39,7 +39,7 @@ jobs:
         run: pnpm run build:npm
 
       - name: Test
-        run: pnpm run test:npm
+        run: pnpm run test
 
       - name: Publish to NPM
         run: pnpm publish --no-git-checks

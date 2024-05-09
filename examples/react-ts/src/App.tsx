@@ -1,11 +1,6 @@
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
 
-
 export default function App() {
-  // useEffect(() => {
-  //   tracker.trackEvent({ type: 'other', metadata: { initial: true } });
-  // }, []);
-
   return (
     <div>
       <h1>React TypeScript Example</h1>

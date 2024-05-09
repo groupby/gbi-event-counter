@@ -6,17 +6,10 @@ import './index.css';
 import App from './App';
 import GBITracker from 'gbi-event-counter';
 
-const tracker = GBITracker.registerGBIUniversalEventTracker({
+GBITracker.registerGBIUniversalEventTracker({
   customerId: 'customer 1',
   listenToPushState: true,
 });
-
-// const orgPushState = window.history.pushState;
-// window.history.pushState = function() {
-//   console.log('here : ', arguments);
-//   orgPushState.apply(this, arguments);
-// };
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

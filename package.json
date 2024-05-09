@@ -21,15 +21,10 @@
   ],
   "scripts": {
     "clean": "rm -rf dist cdn 2> /dev/null",
-    "increment-version": "node scripts/node/increment-version.cjs",
-    "build:dev": "tsc && vite build --config vite.config.dev.ts",
     "build:cdn": "tsc && vite build --config vite.config.cdn.ts",
     "build:npm": "tsc && vite build --config vite.config.npm.ts",
-    "dev": "vite --config vite.config.dev.ts",
     "lint": "eslint .",
-    "test:dev": "vitest --run --config vite.config.dev.ts",
-    "test:cdn": "vitest --run --config vite.config.cdn.ts",
-    "test:npm": "vitest --run --config vite.config.npm.ts",
+    "test": "vitest --run --config vite.config.base.ts",
     "format": "prettier --write .",
     "prepare": "node .husky/install.mjs"
   },
