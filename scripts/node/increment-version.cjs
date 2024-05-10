@@ -20,7 +20,9 @@ const incrementVersion = (version, type) => {
       parts[2] = `${getNextPatchVersionNumber()}-dev`;
       break;
     default:
-      throw new Error(`Invalid version type: "${type}". Use "major", "minor", "patch", or "dev".`);
+      throw new Error(
+        `Invalid version type: "${type}". Use "major", "minor", "patch", or "dev".`,
+      );
   }
   return parts.join('.');
 };

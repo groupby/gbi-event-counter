@@ -1,4 +1,4 @@
-import { register } from './gbi-universal-event-tracker';
+import { getInstance, register } from './gbi-universal-event-tracker';
 
 export type {
   GBIUniversalEventTracker,
@@ -9,4 +9,5 @@ export type { GBITrackerEvent } from './lib/types.ts';
 
 export default {
   registerGBIUniversalEventTracker: register,
+  getInstance,
 };

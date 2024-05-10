@@ -16,6 +16,14 @@ export default [
     },
   },
   {
-    ignores: ['coverage', 'public', 'dist', 'pnpm-lock.yaml', '.husky'],
+    ignores: [
+      'coverage',
+      'public',
+      'dist',
+      'pnpm-lock.yaml',
+      '.husky',
+      'scripts',
+      'vite.config.*.ts',
+    ],
   },
 ];

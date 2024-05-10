@@ -59,7 +59,7 @@ export const register = (
   return _tracker;
 };
 
-export const getInstance = () => {
+export const getInstance = (): GBIUniversalEventTracker => {
   if (!_tracker) {
     throw new Error(
       'Not initialized! Make sure you already called "register" function.',

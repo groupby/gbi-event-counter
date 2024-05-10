@@ -1,4 +1,4 @@
-export { register } from './gbi-universal-event-tracker';
+export { register, getInstance } from './gbi-universal-event-tracker';
 export type {
   GBIUniversalEventTracker,
   GBIUniversalEventTrackerOptions,

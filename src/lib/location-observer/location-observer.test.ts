@@ -5,7 +5,7 @@ import type { LocationObserver } from './types.ts';
 describe('location-observer', () => {
   let observer1: LocationObserver;
   let observer2: LocationObserver;
-  let callback: Mock<any, any>;
+  let callback: Mock<[Location, string], void>;
   let unsubscribe: () => void;
 
   beforeEach(() => {
