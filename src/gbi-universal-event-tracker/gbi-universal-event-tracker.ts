@@ -17,7 +17,7 @@ const init = (options: GBIUniversalEventTrackerOptions) => {
   const { customerId, listenToPushState, overrideUrl } = options;
   _customerId = customerId;
   _listenToPushState = listenToPushState ?? false;
-  _url = overrideUrl ?? 'https://www.gbi-not-defined.com';
+  _url = overrideUrl ?? 'http://35.188.11.228/';
 
   const trackEvent = (event?: GBITrackerEvent) => {
     console.log('customerId:', _customerId);
